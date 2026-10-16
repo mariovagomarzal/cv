@@ -1,0 +1,12 @@
+---
+# Recipients for every secrets file: my user key and a recovery key.
+keys:
+  - &mario age16l6wuucjmqntfrzvzag9t3u25pufjturq6rn9de854g5uja4jelqsz0ufw
+  - &recovery age1jsya6rylp5m5k728e78k30y7w9fzkhz8yvnstgw6vuzh9axjqveqex38hv
+
+creation_rules:
+  - path_regex: ^secrets/
+    key_groups:
+      - age:
+          - *mario
+          - *recovery

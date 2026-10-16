@@ -1,0 +1,16 @@
+# Devenv.
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+
+# Pre-commit.
+.pre-commit-config.yaml
+
+# Yamllint.
+.yamllint.yaml
+
+# Python.
+__pycache__/
+
+# RenderCV.
+rendercv_output/
