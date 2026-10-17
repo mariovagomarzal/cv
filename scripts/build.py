@@ -106,7 +106,9 @@ class Resolver:
         return node
 
     def _resolve_mapping(self, node: dict[str, Any], path: str) -> Any:
-        if node and set(node) <= set(self.locales):
+        # A translated text may also be restricted to some variants, as a list item.
+        texts = set(node) - {ONLY_KEY, EXCEPT_KEY}
+        if texts and texts <= set(self.locales):
             missing = [locale for locale in self.locales if locale not in node]
             if missing:
                 self.errors.append(f"{path}: missing translations for {', '.join(missing)}")
