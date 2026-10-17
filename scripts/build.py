@@ -2,9 +2,13 @@
 
 Variants and locales are discovered from the files in `variants/` and `locales/`, so adding either needs no change
 here. See `content.yaml` for how the content is written.
+
+Private CVs also include the secrets in `secrets/cv.yaml`, encrypted with sops. That file mirrors the RenderCV input
+(for example, `cv.phone`), follows the same rules as the content, and is merged over the public CV.
 """
 
 import argparse
+import functools
 import itertools
 import subprocess
 import sys
@@ -18,6 +22,7 @@ CONTENT_PATH = ROOT / "content.yaml"
 SETTINGS_PATH = ROOT / "settings.yaml"
 VARIANTS_DIR = ROOT / "variants"
 LOCALES_DIR = ROOT / "locales"
+SECRETS_PATH = ROOT / "secrets" / "cv.yaml"
 BUILD_DIR = ROOT / "build"
 OUTPUT_DIR = ROOT / "output"
 
@@ -34,6 +39,26 @@ class BuildError(Exception):
 def load_yaml(path: Path) -> Any:
     with path.open(encoding="utf-8") as file:
         return yaml.safe_load(file)
+
+
+@functools.cache
+def load_secrets() -> Any:
+    """Decrypt the secrets with sops, once per run."""
+    result = subprocess.run(["sops", "decrypt", str(SECRETS_PATH)], capture_output=True, text=True, check=False)
+    if result.returncode != 0:
+        raise BuildError(f"could not decrypt {SECRETS_PATH.relative_to(ROOT)}: {result.stderr.strip()}")
+    return yaml.safe_load(result.stdout)
+
+
+def deep_merge(base: dict[str, Any], extra: dict[str, Any]) -> dict[str, Any]:
+    """Merge two mappings, recursively for the keys that hold mappings in both."""
+    merged = dict(base)
+    for key, value in extra.items():
+        if isinstance(merged.get(key), dict) and isinstance(value, dict):
+            merged[key] = deep_merge(merged[key], value)
+        else:
+            merged[key] = value
+    return merged
 
 
 def discover(directory: Path) -> list[str]:
@@ -95,8 +120,8 @@ class Resolver:
                 self.errors.append(f"{path}: unknown variant '{name}'")
 
 
-def compose(variant: str, locale: str) -> dict[str, Any]:
-    """Build the RenderCV input for a variant in a locale."""
+def compose(variant: str, locale: str, private: bool) -> dict[str, Any]:
+    """Build the RenderCV input for a variant in a locale, with the secrets if it is private."""
     variants = discover(VARIANTS_DIR)
     locales = discover(LOCALES_DIR)
     if variant not in variants:
@@ -121,40 +146,45 @@ def compose(variant: str, locale: str) -> dict[str, Any]:
         if entries:
             cv["sections"][title] = entries
 
-    if resolver.errors:
-        raise BuildError(*resolver.errors)
-
-    return {
+    document = {
         "cv": cv,
         **load_yaml(ROOT / variant_config["design"]),
         **load_yaml(LOCALES_DIR / f"{locale}.yaml"),
         **load_yaml(SETTINGS_PATH),
     }
+    if private:
+        document = deep_merge(document, resolver.resolve(load_secrets(), "secrets"))
+
+    if resolver.errors:
+        raise BuildError(*resolver.errors)
+
+    return document
 
 
 def all_combinations() -> list[tuple[str, str]]:
     return list(itertools.product(discover(VARIANTS_DIR), discover(LOCALES_DIR)))
 
 
-def render(variant: str, locale: str) -> None:
-    name = f"{variant}-{locale}"
+def render(variant: str, locale: str, private: bool) -> None:
+    # Private CVs go to their own folders, so they never replace the public ones.
+    name = f"{variant}-{locale}" + ("-private" if private else "")
     input_path = BUILD_DIR / name / "cv.yaml"
     input_path.parent.mkdir(parents=True, exist_ok=True)
     with input_path.open("w", encoding="utf-8") as file:
-        yaml.safe_dump(compose(variant, locale), file, allow_unicode=True, sort_keys=False, width=120)
+        yaml.safe_dump(compose(variant, locale, private), file, allow_unicode=True, sort_keys=False, width=120)
     subprocess.run(
         ["rendercv", "render", str(input_path), "--output-folder", str(OUTPUT_DIR / name)],
         check=True,
     )
 
 
-def check() -> None:
+def check(private: bool) -> None:
     # Most errors show up in several combinations, so each one is reported once with the combinations it affects.
     errors: dict[str, list[str]] = {}
     combinations = all_combinations()
     for variant, locale in combinations:
         try:
-            compose(variant, locale)
+            compose(variant, locale, private)
         except BuildError as error:
             for message in error.args:
                 errors.setdefault(message, []).append(f"{variant}/{locale}")
@@ -165,22 +195,24 @@ def check() -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    options = argparse.ArgumentParser(add_help=False)
+    options.add_argument("--private", action="store_true", help="include the secrets")
     commands = parser.add_subparsers(dest="command", required=True)
-    commands.add_parser("check", help="check that every variant composes in every locale")
-    render_parser = commands.add_parser("render", help="render a variant in a locale")
+    commands.add_parser("check", parents=[options], help="check that every variant composes in every locale")
+    render_parser = commands.add_parser("render", parents=[options], help="render a variant in a locale")
     render_parser.add_argument("variant")
     render_parser.add_argument("locale")
-    commands.add_parser("render-all", help="render every variant in every locale")
+    commands.add_parser("render-all", parents=[options], help="render every variant in every locale")
     args = parser.parse_args()
 
     try:
         if args.command == "check":
-            check()
+            check(args.private)
         elif args.command == "render":
-            render(args.variant, args.locale)
+            render(args.variant, args.locale, args.private)
         else:
             for variant, locale in all_combinations():
-                render(variant, locale)
+                render(variant, locale, args.private)
     except BuildError as error:
         sys.exit("\n".join(f"error: {message}" for message in error.args))
     except subprocess.CalledProcessError as error:
