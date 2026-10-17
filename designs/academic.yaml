@@ -1,23 +1,23 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
-# After quire, my Typst template for books and articles: EB Garamond with small caps, quiet sans-serif labels in
-# Fira Sans, thin golden rules and generous margins. The section titles take the golden color of their rule, and
-# `academic/SectionBeginning.j2.typ` keeps their text black.
+# After quire, my Typst template for books and articles: EB Garamond with small caps, quiet labels in Fira Sans and
+# thin golden rules. `academic.typ` holds the Typst rules and `academic/SectionBeginning.j2.typ` draws the rule under
+# the section titles, which is why their type is `without_line`.
 design:
   theme: classic
   page:
     size: a4
-    top_margin: 2.5cm
-    bottom_margin: 2.5cm
-    left_margin: 2.5cm
-    right_margin: 2.5cm
+    top_margin: 1.8cm
+    bottom_margin: 1.8cm
+    left_margin: 1.8cm
+    right_margin: 1.8cm
   colors:
     body: '#000000'
     name: '#000000'
     headline: '#808080'
     connections: '#808080'
     section_titles: '#c9b896'
-    links: '#1f4d7a'
+    links: '#000000'
     footer: '#808080'
     top_note: '#808080'
   typography:
@@ -46,14 +46,14 @@ design:
     space_below_headline: 0.5cm
     connections:
       phone_number_format: international
-      show_icons: false
-      display_urls_instead_of_usernames: true
-      separator: '·'
+  links:
+    underline: true
+    show_external_link_icon: true
   sections:
     show_time_spans_in: []
   section_titles:
-    type: with_full_line
-    line_thickness: 0.4pt
+    type: without_line
+    line_thickness: 0.5pt
     space_above: 0.7cm
     space_below: 0.4cm
   templates:
