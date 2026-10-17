@@ -11,6 +11,8 @@ site:
 
 design: designs/academic.yaml
 sections:
+  - summary
   - education
-  - projects
+  - publications
+  - skills
   - languages

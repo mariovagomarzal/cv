@@ -26,24 +26,48 @@ cv:
       username: mariovagomarzal
     - network: GitHub
       username: mariovagomarzal
+  overrides:
+    academic:
+      headline:
+        en: Mathematician interested in type theory and formalized mathematics
+        es: Matemático interesado en la teoría de tipos y las matemáticas formalizadas
+        ca: Matemàtic interessat en la teoria de tipus i les matemàtiques formalitzades
 
 sections:
   summary:
     title: {en: Summary, es: Resumen, ca: Resum}
     entries:
-      - en: I am a mathematician from the Universitat de València, with a particular interest in mathematical
-          formalization, scientific software and developer tooling. I combine a solid mathematical background with
+      - except: [academic]
+        en: I am a mathematician from the Universitat de València, with a particular interest in mathematical
+          formalization, scientific software and the application of AI to software development and to mathematical
+          research. I combine a solid mathematical background with
           hands-on experience in Python and its scientific ecosystem, in Lean 4 and in computer-assisted theorem
           proving, alongside modern development tools such as Git, Nix and continuous integration.
         es: Soy matemático por la Universitat de València, con especial interés en la formalización matemática, el
-          software científico y las herramientas para desarrolladores. Combino una sólida formación matemática con
+          software científico y la aplicación de la IA al desarrollo de software y a la investigación matemática.
+          Combino una sólida formación matemática con
           experiencia práctica en Python y su ecosistema científico, en Lean 4 y en la demostración de teoremas
           asistida por ordenador, junto con herramientas de desarrollo modernas como Git, Nix e integración continua.
         ca: Soc matemàtic per la Universitat de València, amb un interés especial en la formalització matemàtica, el
-          programari científic i les eines per a desenvolupadors. Combine una sòlida formació matemàtica amb
+          programari científic i l'aplicació de la IA al desenvolupament de programari i a la investigació
+          matemàtica. Combine una sòlida formació matemàtica amb
           experiència pràctica en Python i el seu ecosistema científic, en Lean 4 i en la demostració de teoremes
           assistida per ordinador, juntament amb eines de desenvolupament modernes com Git, Nix i la integració
           contínua.
+      - only: [academic]
+        en: I am a mathematician interested in the formalization of mathematics, type theory, programming language
+          theory and category theory. In my final degree thesis I formalized higher-order categories in Lean 4. I am
+          currently pursuing an MSc in Mathematical Research and working on tools that bring AI agents into
+          mathematical research, together with proof assistants.
+        es: Soy matemático, con interés en la formalización de las matemáticas, la teoría de tipos, la teoría de
+          lenguajes de programación y la teoría de categorías. En mi trabajo de fin de grado formalicé las categorías
+          de orden superior en Lean 4. Actualmente curso el Máster en Investigación Matemática y trabajo en
+          herramientas que incorporan agentes de IA a la investigación matemática, junto con los asistentes de
+          demostración.
+        ca: Soc matemàtic, amb interés en la formalització de les matemàtiques, la teoria de tipus, la teoria de
+          llenguatges de programació i la teoria de categories. En el meu treball de fi de grau vaig formalitzar les
+          categories d'ordre superior en Lean 4. Actualment curse el Màster en Investigació Matemàtica i treballe en
+          eines que incorporen agents d'IA a la investigació matemàtica, juntament amb els assistents de demostració.
 
   education:
     title: {en: Education, es: Educación, ca: Formació}
@@ -92,7 +116,8 @@ sections:
   projects:
     title: {en: Projects, es: Proyectos, ca: Projectes}
     entries:
-      - name: '[A Formalization of Higher-Order Categories in Lean 4](https://doi.org/10.5281/zenodo.20631672)'
+      - name: '[A Formalization of Higher-Order Categories in Lean
+          4](https://mariovagomarzal.github.io/higher_category_theory/)'
         start_date: 2025
         end_date: 2026
         summary:
@@ -102,36 +127,46 @@ sections:
           ca: Treball de fi de grau que formalitza les categories d'ordre superior en Lean 4, una generalització de la
             teoria de categories.
         highlights:
-          - en: Thesis and Lean code released openly, with a GitHub repository and a DOI-archived deposit on Zenodo.
-            es: Memoria y código Lean publicados de forma abierta, con un repositorio en GitHub y un depósito
-              archivado con DOI en Zenodo.
-            ca: Memòria i codi Lean publicats de manera oberta, amb un repositori a GitHub i un depòsit arxivat amb
-              DOI a Zenodo.
-        overrides:
-          academic:
-            highlights:
-              - en: Supervised by Enric Cosme Llópez and Raúl Ruiz Mora.
-                es: Dirigido por Enric Cosme Llópez y Raúl Ruiz Mora.
-                ca: Dirigit per Enric Cosme Llópez i Raúl Ruiz Mora.
-              - en: Formalizes the single-sorted notions of *n*-categories and ω-categories and proves their
-                  equivalence with the usual many-sorted ones.
-                es: Formaliza las nociones de un solo tipo de *n*-categoría y ω-categoría y demuestra su equivalencia
-                  con las nociones multitipo habituales.
-                ca: Formalitza les nocions d'un sol tipus de *n*-categoria i ω-categoria i en demostra l'equivalència
-                  amb les nocions multitipus habituals.
-              - en: Thesis and Lean code released openly, with a GitHub repository and a DOI-archived deposit on
-                  Zenodo.
-                es: Memoria y código Lean publicados de forma abierta, con un repositorio en GitHub y un depósito
-                  archivado con DOI en Zenodo.
-                ca: Memòria i codi Lean publicats de manera oberta, amb un repositori a GitHub i un depòsit arxivat
-                  amb DOI a Zenodo.
+          - en: Thesis and Lean code released openly, with a GitHub repository and a [DOI-archived deposit on
+              Zenodo](https://doi.org/10.5281/zenodo.20631672).
+            es: Memoria y código Lean publicados de forma abierta, con un repositorio en GitHub y un [depósito
+              archivado con DOI en Zenodo](https://doi.org/10.5281/zenodo.20631672).
+            ca: Memòria i codi Lean publicats de manera oberta, amb un repositori a GitHub i un [depòsit arxivat amb
+              DOI a Zenodo](https://doi.org/10.5281/zenodo.20631672).
+
+  publications:
+    title: {en: Publications, es: Publicaciones, ca: Publicacions}
+    entries:
+      - title: '[A Formalization of Higher-Order Categories in Lean
+          4](https://mariovagomarzal.github.io/higher_category_theory/)'
+        authors: [Mario Vago Marzal]
+        date: 2026
+        doi: 10.5281/zenodo.20631672
+        journal:
+          en: Final degree thesis, Universitat de València. Supervised by Enric Cosme Llópez
+          es: Trabajo de fin de grado, Universitat de València. Dirigido por Enric Cosme Llópez
+          ca: Treball de fi de grau, Universitat de València. Dirigit per Enric Cosme Llópez
+        summary:
+          en: Formalizes the single-sorted notions of *n*-categories and ω-categories and proves their equivalence
+            with the usual many-sorted ones. The thesis and the Lean code are released openly.
+          es: Formaliza las nociones *single-sorted* de *n*-categoría y ω-categoría y demuestra su equivalencia con
+            las nociones *many-sorted* habituales. La memoria y el código Lean se publican de forma abierta.
+          ca: Formalitza les nocions *single-sorted* de *n*-categoria i ω-categoria i en demostra l'equivalència amb
+            les nocions *many-sorted* habituals. La memòria i el codi Lean es publiquen de manera oberta.
 
   skills:
     title: {en: Skills, es: Aptitudes, ca: Aptituds}
     entries:
+      - only: [academic]
+        label: {en: Proof assistants, es: Asistentes de demostración, ca: Assistents de demostració}
+        details: Lean 4
       - label: {en: Programming languages, es: Lenguajes de programación, ca: Llenguatges de programació}
         details: Python, Lean 4, MATLAB, C++
-      - label: {en: Python ecosystem, es: Ecosistema de Python, ca: Ecosistema de Python}
+        overrides:
+          academic:
+            details: Python, MATLAB, C++
+      - except: [academic]
+        label: {en: Python ecosystem, es: Ecosistema de Python, ca: Ecosistema de Python}
         details: NumPy, SymPy, Polars, Matplotlib, Pydantic, Pydantic AI
       - label: {en: Document typesetting, es: Composición de documentos, ca: Composició de documents}
         details: LaTeX, Typst

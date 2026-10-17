@@ -61,3 +61,5 @@ design:
     education_entry:
       degree_column: null
       main_column: "**INSTITUTION**, DEGREE_WITH_AREA\nSUMMARY\nHIGHLIGHTS"
+    publication_entry:
+      main_column: "**TITLE**\nAUTHORS. JOURNAL.\nSUMMARY\nURL"
