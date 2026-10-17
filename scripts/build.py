@@ -160,11 +160,10 @@ def compose(variant: str, locale: str, private: bool) -> dict[str, Any]:
         if section is None:
             resolver.errors.append(f"variants/{variant}.yaml: unknown section '{section_id}'")
             continue
-        path = f"sections.{section_id}"
-        title = resolver.resolve(section["title"], f"{path}.title")
-        entries = resolver.resolve(section["entries"], f"{path}.entries")
-        if entries:
-            cv["sections"][title] = entries
+        # Resolved whole, so that the section's own overrides apply too.
+        resolved = resolver.resolve(section, f"sections.{section_id}")
+        if resolved["entries"]:
+            cv["sections"][resolved["title"]] = resolved["entries"]
 
     document = {
         "cv": cv,
