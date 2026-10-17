@@ -12,7 +12,9 @@ site:
 design: designs/academic.yaml
 sections:
   - summary
+  - interests
   - education
   - publications
+  - experience
   - skills
   - languages

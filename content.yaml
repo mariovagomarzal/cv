@@ -29,9 +29,9 @@ cv:
   overrides:
     academic:
       headline:
-        en: Mathematician interested in type theory and formalized mathematics
-        es: Matemático interesado en la teoría de tipos y las matemáticas formalizadas
-        ca: Matemàtic interessat en la teoria de tipus i les matemàtiques formalitzades
+        en: Mathematician interested in type theory, category theory and formalized mathematics
+        es: Matemático interesado en la teoría de tipos, la teoría de categorías y las matemáticas formalizadas
+        ca: Matemàtic interessat en la teoria de tipus, la teoria de categories i les matemàtiques formalitzades
 
 sections:
   summary:
@@ -69,6 +69,21 @@ sections:
           categories d'ordre superior en Lean 4. Actualment curse el Màster en Investigació Matemàtica i treballe en
           eines que incorporen agents d'IA a la investigació matemàtica, juntament amb els assistents de demostració.
 
+  interests:
+    title: {en: Research interests, es: Intereses de investigación, ca: Interessos d'investigació}
+    entries:
+      - bullet: {en: Type theory, es: Teoría de tipos, ca: Teoria de tipus}
+      - bullet: {en: Higher category theory, es: Teoría de categorías superiores, ca: Teoria de categories superiors}
+      - bullet:
+          en: Formalized mathematics and proof assistants
+          es: Matemáticas formalizadas y asistentes de demostración
+          ca: Matemàtiques formalitzades i assistents de demostració
+      - bullet: {en: AI-assisted formalization, es: Formalización asistida por IA, ca: Formalització assistida per IA}
+      - bullet:
+          en: Programming language theory and functional programming
+          es: Teoría de lenguajes de programación y programación funcional
+          ca: Teoria de llenguatges de programació i programació funcional
+
   education:
     title: {en: Education, es: Educación, ca: Formació}
     entries:
@@ -93,25 +108,34 @@ sections:
               máxima.
             ca: Treball de fi de grau «A Formalization of Higher-Order Categories in Lean 4», qualificat amb la nota
               màxima.
+        overrides:
+          academic:
+            highlights:
+              - en: Final degree thesis “A Formalization of Higher-Order Categories in Lean 4”, supervised by Enric
+                  Cosme Llópez and awarded the highest grade.
+                es: Trabajo de fin de grado «A Formalization of Higher-Order Categories in Lean 4», dirigido por Enric
+                  Cosme Llópez y calificado con la nota máxima.
+                ca: Treball de fi de grau «A Formalization of Higher-Order Categories in Lean 4», dirigit per Enric
+                  Cosme Llópez i qualificat amb la nota màxima.
 
   experience:
     title: {en: Experience, es: Experiencia, ca: Experiència}
+    overrides:
+      academic:
+        title: {en: Teaching, es: Docencia, ca: Docència}
     entries:
       - company: {en: Private tutoring, es: Clases particulares, ca: Classes particulars}
         position:
-          en: Private mathematics and physics tutor
-          es: Profesor particular de matemáticas y física
-          ca: Professor particular de matemàtiques i física
+          en: Private mathematics tutor
+          es: Profesor particular de matemáticas
+          ca: Professor particular de matemàtiques
         start_date: 2021
         end_date: 2026
         location: {en: Spain, es: España, ca: Espanya}
         highlights:
-          - en: Tutored secondary and pre-university students in mathematics and physics, with emphasis on the
-              pre-university level.
-            es: Clases a estudiantes de secundaria y preuniversitarios de matemáticas y física, con énfasis en el
-              nivel preuniversitario.
-            ca: Classes de matemàtiques i física a estudiants de secundària i preuniversitaris, amb èmfasi en el
-              nivell preuniversitari.
+          - en: Tutored university students in mathematics, as well as pre-university students.
+            es: Clases de matemáticas a estudiantes universitarios, así como a estudiantes preuniversitarios.
+            ca: Classes de matemàtiques a estudiants universitaris, i també a estudiants preuniversitaris.
 
   projects:
     title: {en: Projects, es: Proyectos, ca: Projectes}
@@ -147,19 +171,22 @@ sections:
           es: Trabajo de fin de grado, Universitat de València. Dirigido por Enric Cosme Llópez
           ca: Treball de fi de grau, Universitat de València. Dirigit per Enric Cosme Llópez
         summary:
-          en: Formalizes the single-sorted notions of *n*-categories and ω-categories and proves their equivalence
-            with the usual many-sorted ones. The thesis and the Lean code are released openly.
-          es: Formaliza las nociones *single-sorted* de *n*-categoría y ω-categoría y demuestra su equivalencia con
-            las nociones *many-sorted* habituales. La memoria y el código Lean se publican de forma abierta.
-          ca: Formalitza les nocions *single-sorted* de *n*-categoria i ω-categoria i en demostra l'equivalència amb
-            les nocions *many-sorted* habituals. La memòria i el codi Lean es publiquen de manera oberta.
+          en: Formalizes in Lean 4 the single-sorted and the usual many-sorted notions of *n*-categories and
+            ω-categories, and outlines the proof of their equivalence. The thesis and the Lean code are released
+            openly.
+          es: Formaliza en Lean 4 las nociones *single-sorted* y las *many-sorted* habituales de *n*-categoría y
+            ω-categoría, y esboza la demostración de su equivalencia. La memoria y el código Lean se publican de forma
+            abierta.
+          ca: Formalitza en Lean 4 les nocions *single-sorted* i les *many-sorted* habituals de *n*-categoria i
+            ω-categoria, i esbossa la demostració de la seua equivalència. La memòria i el codi Lean es publiquen de
+            manera oberta.
 
   skills:
     title: {en: Skills, es: Aptitudes, ca: Aptituds}
     entries:
       - only: [academic]
         label: {en: Proof assistants, es: Asistentes de demostración, ca: Assistents de demostració}
-        details: Lean 4
+        details: Lean 4 (Mathlib, blueprint, doc-gen4)
       - label: {en: Programming languages, es: Lenguajes de programación, ca: Llenguatges de programació}
         details: Python, Lean 4, MATLAB, C++
         overrides:
