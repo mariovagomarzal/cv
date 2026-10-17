@@ -1,0 +1,175 @@
+---
+# The content of every CV variant, in every locale.
+#
+# - A mapping whose keys are locale codes (the files in `locales/`) is a translated text, and must have every locale.
+# - Any other value is the same in every locale.
+# - `only` and `except` restrict an entry to some variants (the files in `variants/`).
+# - `overrides` replaces some fields of a mapping in some variants.
+# - Variants choose which sections to show and in which order.
+
+cv:
+  name: Mario Vago Marzal
+  headline:
+    en: Mathematician and scientific software developer
+    es: Matemático y desarrollador de software científico
+    ca: Matemàtic i desenvolupador de programari científic
+  location:
+    en: Valencia, Spain
+    es: Valencia, España
+    ca: València, Espanya
+  email: mariovagomarzal@gmail.com
+  website: https://mariovagomarzal.com
+  social_networks:
+    - network: LinkedIn
+      username: mariovagomarzal
+    - network: GitHub
+      username: mariovagomarzal
+
+sections:
+  summary:
+    title: {en: Summary, es: Resumen, ca: Resum}
+    entries:
+      - en: I am a mathematician from the Universitat de València, with a particular interest in mathematical
+          formalization, scientific software and developer tooling. I combine a solid mathematical background with
+          hands-on experience in Python and its scientific ecosystem, in Lean 4 and in computer-assisted theorem
+          proving, alongside modern development tools such as Git, Nix and continuous integration.
+        es: Soy matemático por la Universitat de València, con especial interés en la formalización matemática, el
+          software científico y las herramientas para desarrolladores. Combino una sólida formación matemática con
+          experiencia práctica en Python y su ecosistema científico, en Lean 4 y en la demostración de teoremas
+          asistida por ordenador, junto con herramientas de desarrollo modernas como Git, Nix e integración continua.
+        ca: Soc matemàtic per la Universitat de València, amb un interés especial en la formalització matemàtica, el
+          programari científic i les eines per a desenvolupadors. Combine una sòlida formació matemàtica amb
+          experiència pràctica en Python i el seu ecosistema científic, en Lean 4 i en la demostració de teoremes
+          assistida per ordinador, juntament amb eines de desenvolupament modernes com Git, Nix i la integració
+          contínua.
+
+  education:
+    title: {en: Education, es: Educación, ca: Formació}
+    entries:
+      - institution:
+          en: Universitat de València and Universitat Politècnica de València
+          es: Universitat de València y Universitat Politècnica de València
+          ca: Universitat de València i Universitat Politècnica de València
+        area: {en: Mathematical Research, es: Investigación Matemática, ca: Investigació Matemàtica}
+        degree: {en: MSc, es: Máster, ca: Màster}
+        start_date: 2026
+        end_date: present
+        location: {en: "Valencia, Spain", es: "Valencia, España", ca: "València, Espanya"}
+      - institution: Universitat de València
+        area: {en: Mathematics, es: Matemáticas, ca: Matemàtiques}
+        degree: {en: BSc, es: Grado, ca: Grau}
+        start_date: 2021
+        end_date: 2026
+        location: {en: "Valencia, Spain", es: "Valencia, España", ca: "València, Espanya"}
+        highlights:
+          - en: Final degree thesis "A Formalization of Higher-Order Categories in Lean 4", awarded the highest grade.
+            es: Trabajo de fin de grado "A Formalization of Higher-Order Categories in Lean 4", calificado con la nota
+              máxima.
+            ca: Treball de fi de grau "A Formalization of Higher-Order Categories in Lean 4", qualificat amb la nota
+              màxima.
+
+  experience:
+    title: {en: Experience, es: Experiencia, ca: Experiència}
+    entries:
+      - company: {en: Private tutoring, es: Clases particulares, ca: Classes particulars}
+        position:
+          en: Private mathematics and physics tutor
+          es: Profesor particular de matemáticas y física
+          ca: Professor particular de matemàtiques i física
+        start_date: 2021
+        end_date: 2026
+        location: {en: Spain, es: España, ca: Espanya}
+        highlights:
+          - en: Tutored secondary and pre-university students in mathematics and physics, with emphasis on the
+              pre-university level.
+            es: Clases a estudiantes de secundaria y preuniversitarios de matemáticas y física, con énfasis en el
+              nivel preuniversitario.
+            ca: Classes de matemàtiques i física a estudiants de secundària i preuniversitaris, amb èmfasi en el
+              nivell preuniversitari.
+
+  projects:
+    title: {en: Projects, es: Proyectos, ca: Projectes}
+    entries:
+      - name: '[A Formalization of Higher-Order Categories in Lean 4](https://doi.org/10.5281/zenodo.20631672)'
+        start_date: 2025
+        end_date: 2026
+        summary:
+          en: Final degree thesis formalizing higher-order categories in Lean 4, a generalization of category theory.
+          es: Trabajo de fin de grado que formaliza las categorías de orden superior en Lean 4, una generalización de
+            la teoría de categorías.
+          ca: Treball de fi de grau que formalitza les categories d'ordre superior en Lean 4, una generalització de la
+            teoria de categories.
+        highlights:
+          - en: Thesis and Lean code released openly, with a GitHub repository and a DOI-archived deposit on Zenodo.
+            es: Memoria y código Lean publicados de forma abierta, con un repositorio en GitHub y un depósito
+              archivado con DOI en Zenodo.
+            ca: Memòria i codi Lean publicats de manera oberta, amb un repositori a GitHub i un depòsit arxivat amb
+              DOI a Zenodo.
+        overrides:
+          academic:
+            highlights:
+              - en: Supervised by Enric Cosme Llópez and Raúl Ruiz Mora.
+                es: Dirigido por Enric Cosme Llópez y Raúl Ruiz Mora.
+                ca: Dirigit per Enric Cosme Llópez i Raúl Ruiz Mora.
+              - en: Formalizes the single-sorted notions of *n*-categories and ω-categories and proves their
+                  equivalence with the usual many-sorted ones.
+                es: Formaliza las nociones de un solo tipo de *n*-categoría y ω-categoría y demuestra su equivalencia
+                  con las nociones multitipo habituales.
+                ca: Formalitza les nocions d'un sol tipus de *n*-categoria i ω-categoria i en demostra l'equivalència
+                  amb les nocions multitipus habituals.
+              - en: Thesis and Lean code released openly, with a GitHub repository and a DOI-archived deposit on
+                  Zenodo.
+                es: Memoria y código Lean publicados de forma abierta, con un repositorio en GitHub y un depósito
+                  archivado con DOI en Zenodo.
+                ca: Memòria i codi Lean publicats de manera oberta, amb un repositori a GitHub i un depòsit arxivat
+                  amb DOI a Zenodo.
+
+  skills:
+    title: {en: Skills, es: Aptitudes, ca: Aptituds}
+    entries:
+      - label: {en: Programming languages, es: Lenguajes de programación, ca: Llenguatges de programació}
+        details: Python, Lean 4, MATLAB, C++
+      - label: {en: Python ecosystem, es: Ecosistema de Python, ca: Ecosistema de Python}
+        details: NumPy, SymPy, Polars, Matplotlib, Pydantic, Pydantic AI
+      - label: {en: Document typesetting, es: Composición de documentos, ca: Composició de documents}
+        details: LaTeX, Typst
+      - label: {en: Tools, es: Herramientas, ca: Eines}
+        details: Git, GitHub, GitHub Actions, Nix
+
+  languages:
+    title: {en: Languages, es: Idiomas, ca: Idiomes}
+    entries:
+      - label: {en: Spanish, es: Español, ca: Castellà}
+        details: {en: Native, es: Nativo, ca: Natiu}
+      - label: {en: Catalan (Valencian), es: Catalán (valenciano), ca: Valencià}
+        details: {en: Native (C1 certified), es: Nativo (C1 acreditado), ca: Natiu (C1 acreditat)}
+      - label: {en: English, es: Inglés, ca: Anglés}
+        details: {en: Advanced (C1 exam pending), es: Avanzado (examen C1 pendiente), ca: Avançat (examen C1 pendent)}
+
+  achievements:
+    title: {en: Achievements, es: Logros, ca: Assoliments}
+    entries:
+      - name: {en: Mathematical olympiads, es: Olimpiadas matemáticas, ca: Olimpíades matemàtiques}
+        summary:
+          en: Participation in several mathematical olympiads during pre-university education (Al-Khwarizmi,
+            Guadalaviar, Proves Cangur and the regional round of the Spanish Mathematical Olympiad), achieving notable
+            rankings.
+          es: Participación en varias olimpiadas matemáticas durante la etapa preuniversitaria (Al-Khwarizmi,
+            Guadalaviar, Proves Cangur y la fase autonómica de la Olimpiada Matemática Española), con clasificaciones
+            destacadas.
+          ca: Participació en diverses olimpíades matemàtiques durant l'etapa preuniversitària (Al-Khwarizmi,
+            Guadalaviar, Proves Cangur i la fase autonòmica de l'Olimpíada Matemàtica Espanyola), amb classificacions
+            destacades.
+      - name:
+          en: Pre-university debate league
+          es: Liga de debate preuniversitario
+          ca: Lliga de debat preuniversitari
+        date: 2019
+        location: {en: "Valencia, Spain", es: "Valencia, España", ca: "València, Espanya"}
+        summary:
+          en: Third place at the regional level as a team in the pre-university debate league organized by Fundación
+            Actívate.
+          es: Tercer puesto a nivel autonómico por equipos en la liga de debate preuniversitario organizada por la
+            Fundación Actívate.
+          ca: Tercer lloc en l'àmbit autonòmic per equips en la lliga de debat preuniversitari organitzada per la
+            Fundación Actívate.

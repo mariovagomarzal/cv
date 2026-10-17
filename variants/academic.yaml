@@ -1,0 +1,7 @@
+---
+# A shorter CV for academic applications, such as PhD positions.
+design: designs/classic.yaml
+sections:
+  - education
+  - projects
+  - languages

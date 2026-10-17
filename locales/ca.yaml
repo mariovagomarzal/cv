@@ -1,0 +1,40 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+# RenderCV has no Catalan locale, so this one builds on the Spanish locale and overrides every text, following the
+# norms of the Acadèmia Valenciana de la Llengua.
+locale:
+  language: spanish
+  last_updated: Última actualització
+  month: mes
+  months: mesos
+  year: any
+  years: anys
+  present: actualitat
+  phrases:
+    degree_with_area: DEGREE en AREA
+  month_abbreviations:
+    - Gen
+    - Febr
+    - Març
+    - Abr
+    - Maig
+    - Juny
+    - Jul
+    - Ag
+    - Set
+    - Oct
+    - Nov
+    - Des
+  month_names:
+    - Gener
+    - Febrer
+    - Març
+    - Abril
+    - Maig
+    - Juny
+    - Juliol
+    - Agost
+    - Setembre
+    - Octubre
+    - Novembre
+    - Desembre

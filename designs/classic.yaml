@@ -1,0 +1,18 @@
+---
+design:
+  theme: classic
+  page:
+    top_margin: 0.85in
+    bottom_margin: 0.85in
+  typography:
+    line_spacing: 0.72em
+  section_titles:
+    space_above: 0.65cm
+    space_below: 0.4cm
+  sections:
+    space_between_regular_entries: 1.7em
+  templates:
+    top_note: ""
+    education_entry:
+      degree_column: null
+      main_column: "**INSTITUTION**, DEGREE_WITH_AREA\nSUMMARY\nHIGHLIGHTS"

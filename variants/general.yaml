@@ -1,0 +1,11 @@
+---
+# The complete CV, for the website and for general job applications.
+design: designs/classic.yaml
+sections:
+  - summary
+  - education
+  - experience
+  - projects
+  - skills
+  - languages
+  - achievements
