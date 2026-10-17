@@ -18,6 +18,8 @@ cv:
     es: Valencia, España
     ca: València, Espanya
   email: mariovagomarzal@gmail.com
+  # Filled in from the secrets in private CVs. Kept here so that it shows up in this position of the header.
+  phone: null
   website: https://mariovagomarzal.com
   social_networks:
     - network: LinkedIn
@@ -62,10 +64,10 @@ sections:
         end_date: 2026
         location: {en: "Valencia, Spain", es: "Valencia, España", ca: "València, Espanya"}
         highlights:
-          - en: Final degree thesis "A Formalization of Higher-Order Categories in Lean 4", awarded the highest grade.
-            es: Trabajo de fin de grado "A Formalization of Higher-Order Categories in Lean 4", calificado con la nota
+          - en: Final degree thesis “A Formalization of Higher-Order Categories in Lean 4”, awarded the highest grade.
+            es: Trabajo de fin de grado «A Formalization of Higher-Order Categories in Lean 4», calificado con la nota
               máxima.
-            ca: Treball de fi de grau "A Formalization of Higher-Order Categories in Lean 4", qualificat amb la nota
+            ca: Treball de fi de grau «A Formalization of Higher-Order Categories in Lean 4», qualificat amb la nota
               màxima.
 
   experience:

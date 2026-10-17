@@ -1,6 +1,6 @@
 ---
 # The complete CV, for the website and for general job applications.
-design: designs/classic.yaml
+design: designs/general.yaml
 sections:
   - summary
   - education

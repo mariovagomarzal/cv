@@ -1,0 +1,54 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+# After lattice, the visual identity of my website: Space Grotesk for the text, Space Mono for the name and the
+# section titles, the ink and muted colors of its light palette and its orange accent.
+design:
+  theme: classic
+  page:
+    size: a4
+    top_margin: 1.8cm
+    bottom_margin: 1.8cm
+    left_margin: 1.8cm
+    right_margin: 1.8cm
+  colors:
+    body: '#17271f'
+    name: '#17271f'
+    headline: '#6a7268'
+    connections: '#6a7268'
+    section_titles: '#b96f28'
+    links: '#b96f28'
+    footer: '#6a7268'
+    top_note: '#6a7268'
+  typography:
+    line_spacing: 0.65em
+    alignment: left
+    font_family:
+      body: Space Grotesk
+      name: Space Mono
+      headline: Space Grotesk
+      connections: Space Mono
+      section_titles: Space Mono
+    font_size:
+      body: 9.5pt
+      name: 24pt
+      headline: 11pt
+      connections: 8.5pt
+      section_titles: 1.2em
+  header:
+    alignment: left
+    space_below_name: 0.5cm
+    space_below_headline: 0.5cm
+    connections:
+      phone_number_format: international
+  sections:
+    show_time_spans_in: []
+  section_titles:
+    type: with_full_line
+    line_thickness: 0.5pt
+    space_above: 0.6cm
+    space_below: 0.35cm
+  templates:
+    top_note: ''
+    education_entry:
+      degree_column: null
+      main_column: "**INSTITUTION**, DEGREE_WITH_AREA\nSUMMARY\nHIGHLIGHTS"

@@ -3,6 +3,15 @@
 Variants and locales are discovered from the files in `variants/` and `locales/`, so adding either needs no change
 here. See `content.yaml` for how the content is written.
 
+A design is a RenderCV design file in `designs/`, for what its options cannot express, optionally with:
+
+- a Typst file of the same name, whose code runs before RenderCV's setup (so it can only style what RenderCV leaves
+  alone, since RenderCV's own rules take precedence);
+- a folder of the same name with RenderCV template overrides, as RenderCV looks for them in the theme folder.
+
+The fonts the designs need are taken from
+the folder in the `CV_FONTS` environment variable, which the development shell sets.
+
 Private CVs also include the secrets in `secrets/cv.yaml`, encrypted with sops. That file mirrors the RenderCV input
 (for example, `cv.phone`), follows the same rules as the content, and is merged over the public CV.
 """
@@ -10,6 +19,8 @@ Private CVs also include the secrets in `secrets/cv.yaml`, encrypted with sops. 
 import argparse
 import functools
 import itertools
+import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -165,13 +176,47 @@ def all_combinations() -> list[tuple[str, str]]:
     return list(itertools.product(discover(VARIANTS_DIR), discover(LOCALES_DIR)))
 
 
+def prepare_build_folder(folder: Path, variant: str, locale: str) -> None:
+    """Gather next to the RenderCV input the fonts and the template overrides that RenderCV looks for there."""
+    fonts = os.environ.get("CV_FONTS")
+    if not fonts:
+        raise BuildError("CV_FONTS is not set, run the build inside the development shell")
+    shutil.rmtree(folder, ignore_errors=True)
+    folder.mkdir(parents=True)
+    (folder / "fonts").symlink_to(fonts)
+
+    design_path = ROOT / load_yaml(VARIANTS_DIR / f"{variant}.yaml")["design"]
+    theme_folder = folder / load_yaml(design_path)["design"]["theme"]
+    templates_folder = design_path.with_suffix("")
+    if templates_folder.is_dir():
+        shutil.copytree(templates_folder, theme_folder)
+    if (theme_folder / "Preamble.j2.typ").exists():
+        raise BuildError(f"{templates_folder.relative_to(ROOT)}: the preamble is generated, use the Typst file instead")
+
+    # The preamble runs the design's Typst code, kept raw so that Jinja leaves it alone, and then RenderCV's own
+    # preamble. RenderCV's locales have no Catalan, so the Typst language, which also sets the hyphenation rules, is
+    # taken from the locale code instead.
+    preamble = []
+    typst_path = design_path.with_suffix(".typ")
+    if typst_path.exists():
+        preamble += ["{% raw %}", typst_path.read_text(encoding="utf-8"), "{% endraw %}"]
+    preamble += [
+        f'{{% with locale = {{"language_iso_639_1": "{locale}", "is_rtl": locale.is_rtl}} %}}',
+        '{% include "typst/Preamble.j2.typ" %}',
+        "{% endwith %}",
+    ]
+    theme_folder.mkdir(exist_ok=True)
+    (theme_folder / "Preamble.j2.typ").write_text("\n".join(preamble) + "\n", encoding="utf-8")
+
+
 def render(variant: str, locale: str, private: bool) -> None:
     # Private CVs go to their own folders, so they never replace the public ones.
     name = f"{variant}-{locale}" + ("-private" if private else "")
+    document = compose(variant, locale, private)
+    prepare_build_folder(BUILD_DIR / name, variant, locale)
     input_path = BUILD_DIR / name / "cv.yaml"
-    input_path.parent.mkdir(parents=True, exist_ok=True)
     with input_path.open("w", encoding="utf-8") as file:
-        yaml.safe_dump(compose(variant, locale, private), file, allow_unicode=True, sort_keys=False, width=120)
+        yaml.safe_dump(document, file, allow_unicode=True, sort_keys=False, width=120)
     subprocess.run(
         ["rendercv", "render", str(input_path), "--output-folder", str(OUTPUT_DIR / name)],
         check=True,
