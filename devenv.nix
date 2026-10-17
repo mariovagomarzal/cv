@@ -84,7 +84,11 @@ in {
       extends = "default";
       # Encrypted values written by sops do not fit the line length limit.
       ignore = "secrets/";
-      rules.line-length.max = 120;
+      rules = {
+        line-length.max = 120;
+        # GitHub workflows use `on` as a key, which YAML 1.1 would read as a boolean.
+        truthy.check-keys = false;
+      };
     };
   };
 

@@ -1,0 +1,39 @@
+---
+name: Run CI
+
+# Runs on every push to the main branch, on pull requests against it, or on demand.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:  # Allows manual triggering of the workflow.
+
+permissions:
+  contents: read  # Read access to repository contents.
+
+jobs:
+  # Check and render the public CVs with the same toolchain the development shell provides.
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+      - name: Cache Nix store
+        uses: cachix/cachix-action@v17
+        with:
+          name: devenv
+      - name: Install devenv
+        run: nix profile install github:cachix/devenv/v2.4.0
+      - name: Check the CVs within devenv
+        run: devenv shell just -- check
+      - name: Render the public CVs within devenv
+        run: devenv shell just -- render-all
+      - name: Upload the rendered PDFs
+        uses: actions/upload-artifact@v7
+        with:
+          name: cv
+          path: output/*/*.pdf
+          if-no-files-found: error
