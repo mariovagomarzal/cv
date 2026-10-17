@@ -11,9 +11,11 @@ on:
 
 permissions:
   contents: read  # Read access to repository contents.
+  pages: write  # Required to publish to GitHub Pages.
+  id-token: write  # Required to authenticate the deployment.
 
 jobs:
-  # Check and render the public CVs with the same toolchain the development shell provides.
+  # Check and render the public CVs and build the website with the same toolchain the development shell provides.
   ci:
     runs-on: ubuntu-latest
     steps:
@@ -27,13 +29,37 @@ jobs:
           name: devenv
       - name: Install devenv
         run: nix profile install github:cachix/devenv/v2.4.0
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
       - name: Check the CVs within devenv
         run: devenv shell just -- check
       - name: Render the public CVs within devenv
         run: devenv shell just -- render-all
+      - name: Build the website within devenv
+        run: devenv shell just -- site
       - name: Upload the rendered PDFs
         uses: actions/upload-artifact@v7
         with:
           name: cv
           path: output/*/*.pdf
           if-no-files-found: error
+      - name: Upload the website
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+  # Publish what the previous job built, on pushes to the main branch only.
+  publish:
+    needs: ci
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    # One deployment at a time, and a run in flight is left to finish rather than cancelled.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

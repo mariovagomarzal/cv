@@ -1,0 +1,47 @@
+<!doctype html>
+<!-- The template of the viewer pages, filled in by `scripts/build.py site`. -->
+<html lang="en" data-root="{{root}}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The same format as the pages of mariovagomarzal.com. -->
+    <title>cv — {{name}}</title>
+    <link rel="icon" href="{{root}}favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mariovagomarzal/lattice@0.2.0/dist/lattice.css" />
+    <link rel="stylesheet" href="{{root}}style.css" />
+    <!-- Set before the first paint, so that a dark system never flashes the light palette. -->
+    <script>
+      document.documentElement.dataset.theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    </script>
+    <script type="application/json" id="manifest">{{manifest}}</script>
+    <script src="{{root}}viewer.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <a class="brand" href="https://mariovagomarzal.com">
+        <span class="logo" aria-hidden="true">{{logo}}</span>
+        <span class="name">Mario's CV</span>
+      </a>
+      <nav class="controls">
+        <div class="group" id="variant-group" role="group" aria-labelledby="variant-label">
+          <span class="label" id="variant-label" data-string="variant"></span>
+          <div class="options" id="variants"></div>
+        </div>
+        <div class="group" role="group" aria-labelledby="locale-label">
+          <span class="label" id="locale-label" data-string="language"></span>
+          <div class="options" id="locales"></div>
+        </div>
+        <a class="download" id="download" download data-string="download"></a>
+      </nav>
+    </header>
+    <main class="viewer">
+      <iframe id="pdf"></iframe>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+/* The viewer, on lattice's palette and typefaces, after the look of mariovagomarzal.com. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100dvh;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-orange);
+  color: var(--color-base);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding: 1rem clamp(1rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.logo svg {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
+
+.name {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.group[hidden] {
+  display: none;
+}
+
+.label {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+}
+
+.options {
+  display: flex;
+}
+
+/* Bordered boxes that light up in the accent, like the controls of the website. */
+.option,
+.download {
+  appearance: none;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-base);
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 250ms,
+    color 250ms,
+    border-color 250ms;
+}
+
+.option + .option {
+  margin-left: -1px;
+}
+
+.option:hover,
+.option:focus-visible,
+.download:hover,
+.download:focus-visible {
+  position: relative;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-orange);
+}
+
+.option[aria-pressed="true"] {
+  position: relative;
+  color: var(--color-text);
+  border-color: var(--color-orange);
+}
+
+.download {
+  border-color: var(--color-orange);
+  background: var(--color-orange);
+  color: var(--color-base);
+}
+
+.download:hover,
+.download:focus-visible {
+  color: var(--color-orange);
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-orange);
+  outline-offset: 3px;
+}
+
+/* The viewer takes everything below the header, edge to edge. */
+.viewer {
+  min-height: 0;
+}
+
+.viewer iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: var(--color-surface);
+}

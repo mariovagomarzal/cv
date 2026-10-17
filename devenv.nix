@@ -33,6 +33,8 @@ in {
     git
     sops
     rendercv
+    # Runs the script that draws the logo of the website with lattice.
+    deno
   ];
 
   languages.python = {

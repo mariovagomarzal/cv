@@ -1,5 +1,14 @@
 ---
 # A shorter CV for academic applications, such as PhD positions.
+
+# How the website names the variant, and where it places it among the others.
+site:
+  order: 2
+  name:
+    en: Academic
+    es: Académico
+    ca: Acadèmic
+
 design: designs/academic.yaml
 sections:
   - education

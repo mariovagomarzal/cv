@@ -1,5 +1,14 @@
 ---
 # The complete CV, for the website and for general job applications.
+
+# How the website names the variant, and where it places it among the others.
+site:
+  order: 1
+  name:
+    en: General
+    es: General
+    ca: General
+
 design: designs/general.yaml
 sections:
   - summary

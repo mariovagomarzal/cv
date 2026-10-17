@@ -1,5 +1,14 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+# `locale` is passed to RenderCV as is. `site` names the locale on the website, in its own language, places it among
+# the others and translates the website's interface.
+site:
+  name: Valencià
+  order: 3
+  strings:
+    variant: Tipus
+    language: Llengua
+    download: Descarregar PDF
+
 # RenderCV has no Catalan locale, so this one builds on the Spanish locale and overrides every text, following the
 # norms of the Acadèmia Valenciana de la Llengua.
 locale:

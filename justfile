@@ -19,6 +19,16 @@ render variant="general" locale="en" *args:
 render-all *args:
     python {{build_script}} render-all {{args}}
 
+[group("site")]
+[doc("Build the website from the rendered public CVs.")]
+site:
+    python {{build_script}} site
+
+[group("site")]
+[doc("Serve the website locally.")]
+serve port="8000":
+    python -m http.server --directory dist {{port}}
+
 alias c := check
 alias r := render
 alias ra := render-all
