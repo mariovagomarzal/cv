@@ -57,17 +57,21 @@ sections:
       - only: [academic]
         en: I am a mathematician interested in the formalization of mathematics, type theory, programming language
           theory and category theory. In my final degree thesis I formalized higher-order categories in Lean 4. I am
-          currently pursuing an MSc in Mathematical Research and working on tools that bring AI agents into
-          mathematical research, together with proof assistants.
+          currently pursuing an MSc in Mathematical Research, and I have coauthored a preprint on higher-order
+          many-sorted categorial algebras and another proposing Stemma, an environment where research groups work
+          together with AI agents and proof assistants.
         es: Soy matemático, con interés en la formalización de las matemáticas, la teoría de tipos, la teoría de
           lenguajes de programación y la teoría de categorías. En mi trabajo de fin de grado formalicé las categorías
-          de orden superior en Lean 4. Actualmente curso el Máster en Investigación Matemática y trabajo en
-          herramientas que incorporan agentes de IA a la investigación matemática, junto con los asistentes de
+          de orden superior en Lean 4. Actualmente curso el Máster en Investigación Matemática, y soy coautor de una
+          prepublicación sobre álgebras categoriales *many-sorted* de orden superior y de otra que propone Stemma, un
+          entorno en el que los grupos de investigación trabajan junto con agentes de IA y asistentes de
           demostración.
         ca: Soc matemàtic, amb interés en la formalització de les matemàtiques, la teoria de tipus, la teoria de
           llenguatges de programació i la teoria de categories. En el meu treball de fi de grau vaig formalitzar les
-          categories d'ordre superior en Lean 4. Actualment curse el Màster en Investigació Matemàtica i treballe en
-          eines que incorporen agents d'IA a la investigació matemàtica, juntament amb els assistents de demostració.
+          categories d'ordre superior en Lean 4. Actualment curse el Màster en Investigació Matemàtica, i soc coautor
+          d'una prepublicació sobre àlgebres categorials *many-sorted* d'ordre superior i d'una altra que proposa
+          Stemma, un entorn en què els grups d'investigació treballen juntament amb agents d'IA i assistents de
+          demostració.
 
   interests:
     title: {en: Research interests, es: Intereses de investigación, ca: Interessos d'investigació}
@@ -140,6 +144,16 @@ sections:
   projects:
     title: {en: Projects, es: Proyectos, ca: Projectes}
     entries:
+      - name: '[Stemma](https://github.com/stemma-math/stemma-exedra)'
+        start_date: 2026
+        end_date: present
+        summary:
+          en: Open-source prototype of a collaborative platform where people and AI agents do mathematical research
+            together, described in a preprint written with Enric Cosme Llópez.
+          es: Prototipo de código abierto de una plataforma colaborativa en la que personas y agentes de IA hacen
+            juntos investigación matemática, descrito en una prepublicación escrita con Enric Cosme Llópez.
+          ca: Prototip de codi obert d'una plataforma col·laborativa en què persones i agents d'IA fan junts
+            investigació matemàtica, descrit en una prepublicació escrita amb Enric Cosme Llópez.
       - name: '[A Formalization of Higher-Order Categories in Lean
           4](https://mariovagomarzal.github.io/higher_category_theory/)'
         start_date: 2025
@@ -161,6 +175,42 @@ sections:
   publications:
     title: {en: Publications, es: Publicaciones, ca: Publicacions}
     entries:
+      - title: A software infrastructure proposal for mathematical research with AI agents
+        authors: [Mario Vago Marzal, Enric Cosme Llópez]
+        date: 2026-11
+        doi: 10.48550/arXiv.2611.11645
+        journal:
+          en: Preprint, arXiv:2611.11645 [math.HO]
+          es: Prepublicación, arXiv:2611.11645 [math.HO]
+          ca: Prepublicació, arXiv:2611.11645 [math.HO]
+        summary:
+          en: Proposes a self-hosted environment where research groups do their daily mathematical work together
+            with AI agents, built on a small open core that records who did what and gives every result a stable
+            address. Presents Stemma, an early prototype of the proposal.
+          es: Propone un entorno autoalojado en el que los grupos de investigación hacen su trabajo matemático
+            diario junto con agentes de IA, construido sobre un pequeño núcleo abierto que registra quién hizo qué y
+            da a cada resultado una dirección estable. Presenta Stemma, un primer prototipo de la propuesta.
+          ca: Proposa un entorn autoallotjat en què els grups d'investigació fan el seu treball matemàtic diari
+            juntament amb agents d'IA, construït sobre un xicotet nucli obert que registra qui va fer què i dona a
+            cada resultat una adreça estable. Presenta Stemma, un primer prototip de la proposta.
+      - title: Higher-order many-sorted categorial algebras via generalized hep-derivors
+        authors: [Juan Climent Vidal, Enric Cosme Llópez, Raúl Ruiz Mora, Mario Vago Marzal]
+        date: 2026-11
+        doi: 10.48550/arXiv.2611.03553
+        journal:
+          en: Preprint, arXiv:2611.03553 [math.CT]
+          es: Prepublicación, arXiv:2611.03553 [math.CT]
+          ca: Prepublicació, arXiv:2611.03553 [math.CT]
+        summary:
+          en: Studies many-sorted algebras whose carriers are strict higher-order categories, relating their
+            homogeneous and heterogeneous presentations through generalized hep-derivors, with an equivalence in
+            finite dimensions and the ω-dimensional case recovered as a limit of truncations.
+          es: Estudia las álgebras *many-sorted* cuyos soportes son categorías estrictas de orden superior, y
+            relaciona sus presentaciones homogénea y heterogénea mediante hep-derivors generalizados, con una
+            equivalencia en dimensión finita y el caso ω-dimensional recuperado como límite de truncaciones.
+          ca: Estudia les àlgebres *many-sorted* els suports de les quals són categories estrictes d'ordre superior,
+            i relaciona les seues presentacions homogènia i heterogènia mitjançant hep-derivors generalitzats, amb
+            una equivalència en dimensió finita i el cas ω-dimensional recuperat com a límit de truncacions.
       - title: '[A Formalization of Higher-Order Categories in Lean
           4](https://mariovagomarzal.github.io/higher_category_theory/)'
         authors: [Mario Vago Marzal]
